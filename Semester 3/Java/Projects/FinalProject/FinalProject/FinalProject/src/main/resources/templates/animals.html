@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>The Animals</title>
 </head>
 <body>
-    <button
+    <div class="container">
+        <table class="table table-bordered-mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Breed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="animals : ${animals}">
+                    <td th:text="${animals.Name}"></td>
+                    <td th:text="${animals.Age}"></td>
+                    <td th:text="${animals.Breed}"></td>
+                    <td>
+                        <a th:href="@{animal/{animalId}(id=${animals.animalId})}">Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
